@@ -1,8 +1,6 @@
 import streamlit as st
 import plotly.express as px
-import plotly.figure_factory as ff
 import matplotlib.pyplot as plt
-import numpy as np
 import seaborn as sns
 
 def plot_histogram(df, xcol=None,y_col=None, color = None):
