@@ -7,7 +7,11 @@ from plots import *
 import os
 
 examples_path = os.listdir('datasets/')
-plots_list = {'Histogram': plot_histogram, 'Scatter Plot': plot_scatterplot}
+plots_list = {
+    'Histogram': plot_histogram, 
+    'Scatter Plot': plot_scatterplot,
+    'Box Plot': plot_boxplot       
+}
 example_datasets = [None, (*examples_path)]
 st.title('Dataset Dashboard')
 option = st.sidebar.selectbox(
@@ -34,7 +38,7 @@ if option:
         (None,(*list(df.columns)))
         )
     if target_col is not None:
-        if st.checkbox('Target Histogram', value=1):
+        if st.sidebar.checkbox('Target Histogram', value=1):
             plot_histogram(df, target_col, target_col)
     
     plot = st.sidebar.selectbox(
