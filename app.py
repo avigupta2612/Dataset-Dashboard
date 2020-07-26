@@ -4,14 +4,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.express as px
 from plots import *
+import os
 
+examples_path = os.listdir('datasets/')
 plots_list = {'Histogram': plot_histogram, 'Scatter Plot': plot_scatterplot}
-example_datasets = [None, 'winequality.csv', 'heart.csv']
+example_datasets = [None, (*examples_path)]
 st.title('Dataset Dashboard')
 option = st.sidebar.selectbox(
     'Select from example datasets',
     example_datasets)
-
+if option is not None:
+    option = os.path.join('datasets',option)
 uploaded_file = st.sidebar.file_uploader('Upload a csv file')
 if uploaded_file:
     option = uploaded_file

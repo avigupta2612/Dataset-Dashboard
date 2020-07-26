@@ -11,7 +11,7 @@ __Requirements__
 - Numpy
 
 __Environment__
-Create a virtual environment to run this app using <br/>
+- Create a virtual environment to run this app using <br/>
 `conda create -n dashboardapp python=3.7 pip` <br/>
 `conda activate dashboardapp` <br/>
 `pip install -r requirements.txt` <br/>
