@@ -11,7 +11,7 @@ plots_list = {
     'Histogram': plot_histogram, 
     'Bar Chart': plot_barplot,
     'Scatter Plot': plot_scatterplot,
-    'Box Plot': plot_boxplot       
+    'Box Plot': plot_boxplot      
 }
 example_datasets = [None, (*examples_path)]
 st.title('Dataset Dashboard')
@@ -24,7 +24,7 @@ uploaded_file = st.sidebar.file_uploader('Upload a csv file')
 if uploaded_file:
     option = uploaded_file
 
-
+@st.cache
 def load_data(option):
     df = pd.read_csv(option)
     return df
@@ -33,7 +33,7 @@ if option:
     df = load_data(option)
     if st.checkbox('First Five rows', value=1):
         st.write(df.head())
-    
+
     target_col = st.sidebar.selectbox(
         'Select Target Column',
         (None,(*list(df.columns)))
@@ -55,6 +55,16 @@ if option:
             
         else:
             st.info('No missing values')
+    
+    if st.sidebar.checkbox('Correlation Matrix'):
+        corrmap = df.corr()
+        plot_heatmap(corrmap)
+    
+    if st.sidebar.checkbox('Create Target Distplot'):
+        if target_col:
+            plot_distplot(list(df[target_col].values))
+        else:
+            st.error("Select Target value first")
     plot = st.sidebar.selectbox(
         'Select Plot',
         (None, (*plots_list.keys()))
