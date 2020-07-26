@@ -51,8 +51,8 @@ if option:
             'Select color axis column',
             (None,(*list(df.columns)))
         )
-        
-        plots_list[plot](df, xcol, ycol, color)
+        if xcol is not None:
+            plots_list[plot](df, xcol, ycol, color)
 
 
 else:
