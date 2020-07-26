@@ -12,9 +12,10 @@ __Requirements__
 
 __Environment__
 Create a virtual environment to run this app using <br/>
-`conda create -n dashboardapp python=3.7 pip`
-`conda activate dashboardapp`
-`pip install -r requirements.txt`
+`conda create -n dashboardapp python=3.7 pip` <br/>
+`conda activate dashboardapp` <br/>
+`pip install -r requirements.txt` <br/>
+
 __Web App__
 - To run the Web App run the app.py file using <br/>
 `streamlit run app.py`
