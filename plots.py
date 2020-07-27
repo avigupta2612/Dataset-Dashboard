@@ -12,7 +12,8 @@ def plot_histogram(df, xcol=None,y_col=None, color = None):
 
 def plot_scatterplot(df, xcol= None, ycol = None, color = None):
     fig = px.scatter(df, xcol, ycol, color, 
-                                title= 'Scatter Plot', color_discrete_sequence= px.colors.sequential.Viridis)
+                                title= 'Scatter Plot',  
+                                color_discrete_sequence= px.colors.sequential.Viridis)
     st.plotly_chart(fig)
 
 def plot_boxplot(df, xcol=None, ycol = None, color = None):
@@ -22,10 +23,10 @@ def plot_boxplot(df, xcol=None, ycol = None, color = None):
                                 title = 'Box Plot', color_discrete_sequence= px.colors.sequential.Viridis)
     st.plotly_chart(fig)
 
-def plot_barplot(df, xcol=None, ycol= None, color= None):
+def plot_barplot(df, xcol=None, ycol= None, color= None, title = 'Bar Chart', hover_data=None):
     fig = px.bar(df, xcol, ycol, color ,
-                                title= 'Bar Chart', color_discrete_sequence= px.colors.sequential.Plasma
-                                )
+                                title= title, hover_data = hover_data,
+                                color_discrete_sequence= px.colors.sequential.Plasma)
     st.plotly_chart(fig)
 
 def plot_heatmap(df, xcol= None, ycol= None):

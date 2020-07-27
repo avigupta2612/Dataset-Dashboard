@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
+#simport numpy as np
 from plots import *
 import os
 
@@ -29,16 +29,22 @@ def load_data(option):
 
 if option:
     df = load_data(option)
-    if st.checkbox('First Five rows', value=1):
-        st.write(df.head())
+    
+    if st.checkbox('Explore Dataset', value=1):
+        st.dataframe(df, 1000, 150)
+
+    if st.sidebar.checkbox('Describe Dataset'):
+        st.write(df.describe())
 
     target_col = st.sidebar.selectbox(
         'Select Target Column',
         (None,(*list(df.columns)))
-        )
+    )
+
     if target_col is not None:
         if st.sidebar.checkbox('Target Histogram', value=1):
             plot_histogram(df, target_col, target_col)
+
     if st.sidebar.checkbox('Check for Missing Values'):
         null = df.isnull().values.any()
         if null:
@@ -47,14 +53,17 @@ if option:
             missing_values.sort_values(inplace=True)
             missing_values = missing_values.to_frame()
             missing_values.columns = ['Count']
-            missing_values.index.names = ['Name']
-            missing_values['Name'] = missing_values.index
-            plot_barplot(missing_values, xcol='Name', ycol= 'Count', color='Name')
+            missing_values.index.names = ['Column']
+            missing_values['Percentage'] = missing_values.Count.values/df.shape[0]
+            missing_values['Column'] = missing_values.index
+            
+            plot_barplot(missing_values, xcol='Column', ycol= 'Count', color='Column', 
+                        title = 'Missing Values', hover_data = [missing_values['Percentage']])
             
         else:
             st.info('No missing values')
     
-    if st.sidebar.checkbox('Correlation Matrix'):
+    if st.sidebar.checkbox('Plot Correlation Matrix'):
         corrmap = df.corr()
         plot_heatmap(corrmap)
     

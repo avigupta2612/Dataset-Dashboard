@@ -9,6 +9,7 @@ __Requirements__
 - Pandas
 - Matplotlib
 - Numpy
+- Seaborn
 
 __Environment__
 - Create a virtual environment to run this app using <br/>
