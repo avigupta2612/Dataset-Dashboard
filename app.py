@@ -42,7 +42,7 @@ if option:
     )
 
     if target_col is not None:
-        if st.sidebar.checkbox('Target Histogram', value=1):
+        if st.sidebar.checkbox('Create Target Histogram', value=0):
             plot_histogram(df, target_col, target_col)
 
     if st.sidebar.checkbox('Check for Missing Values'):
