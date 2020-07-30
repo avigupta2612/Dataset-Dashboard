@@ -1,6 +1,6 @@
 # Dataset Dashboard
 __This is custom dataset dashboard webapp made using Streamlit and Python__
-- You can upload your dataset and view amazing data visualizations made with Plotly.
+- You can upload your dataset and view amazing data visualizations made with Plotly and Seaborn.
 - Or you can explore the example datasets I have included.
 
 __Requirements__
