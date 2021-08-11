@@ -4,12 +4,20 @@ import numpy as np
 from plots import *
 import os
 
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+from plots import *
+import os
+
 examples_path = os.listdir('datasets/')
 plots_list = {
     'Histogram': plot_histogram, 
     'Bar Chart': plot_barplot,
     'Scatter Plot': plot_scatterplot,
-    'Box Plot': plot_boxplot      
+    'Box Plot': plot_boxplot,  
+    'Pie Chart': pie_chart    
 }
 example_datasets = [None, (*examples_path)]
 st.title('Dataset Dashboard')
@@ -56,7 +64,7 @@ if option:
             missing_values.index.names = ['Column']
             missing_values['Percentage'] = missing_values.Count.values/df.shape[0]
             missing_values['Column'] = missing_values.index
-            
+            st.write(missing_values)          
             plot_barplot(missing_values, xcol='Column', ycol= 'Count', color='Column', 
                         title = 'Missing Values', hover_data = [missing_values['Percentage']])
             

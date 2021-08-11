@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Aug 11 15:52:15 2021
+
+@author: Sahil
+"""
+
+
 import streamlit as st
 import plotly.express as px
 import matplotlib.pyplot as plt
@@ -40,3 +48,13 @@ def plot_distplot(xcol):
     sns.distplot(xcol)
     plt.title('Target Distplot')
     st.pyplot()
+
+def pie_chart(df,xcol=None,ycol=None,color=None):
+    ratio_y=df[ycol].nunique()/df[ycol].count()
+    ratio_x=df[xcol].nunique()/df[xcol].count()
+    if ratio_y>0.05 or ratio_x>0.05:
+        st.write("Please select a column with categorical values")
+    else:  
+        fig=px.pie(df,values=xcol,names=ycol)
+        st.plotly_chart(fig)
+        
