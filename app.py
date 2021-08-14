@@ -5,11 +5,7 @@ from plots import *
 import os
 
 
-import streamlit as st
-import pandas as pd
-import numpy as np
-from plots import *
-import os
+
 
 examples_path = os.listdir('datasets/')
 plots_list = {
